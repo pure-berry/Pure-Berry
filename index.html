@@ -1,323 +1,426 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pure Berry | Stroberi Segar dari Petani</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pure Berry | Stroberi Segar dari Petani</title>
+<style>
+  :root{
+    --berry-1:#D43A4A;    /* warm berry (main) */
+    --berry-2:#E86878;    /* accent */
+    --pink-soft:#FFE7E9;  /* soft background */
+    --leaf:#5FA45E;       /* button accent */
+    --cream:#FFF8F6;
+    --text:#373737;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:linear-gradient(180deg,#fff9fa 0%, #fffefe 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    scroll-behavior:smooth;
+  }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #fff5f7, #ffe8ec);
-      color: #333;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+  /* container */
+  .container{ max-width:1100px; margin:0 auto; padding:0 18px; }
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #d94b62, #f07387);
-      color: white;
-      text-align: center;
-      padding: 90px 20px;
-      animation: fadeIn 1.5s ease;
-      border-bottom-left-radius: 80px;
-      border-bottom-right-radius: 80px;
-    }
+  /* top nav */
+  .topbar{
+    display:flex; justify-content:center; gap:18px; padding:12px 0; font-weight:700; font-size:14px;
+    position:sticky; top:0; background:rgba(255,255,255,0.6); backdrop-filter: blur(6px); z-index:90;
+    border-bottom:1px solid rgba(0,0,0,0.03);
+  }
+  .topbar a{ color:var(--text); text-decoration:none; padding:6px 10px; border-radius:8px; }
+  .topbar a:hover{ background:rgba(212,58,74,0.06); color:var(--berry-1); }
 
-    header h1 {
-      font-size: 45px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
+  /* HERO */
+  header.hero{
+    background: linear-gradient(90deg, rgba(212,58,74,0.98), rgba(232,104,120,0.95) 60%, rgba(255,230,230,0.95));
+    color:white;
+    padding:56px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-wrap{ display:flex; gap:24px; align-items:center; justify-content:space-between; max-width:1100px; margin:0 auto; padding:0 18px; }
+  .hero-left{ flex:1 1 520px; }
+  .hero-kicker{ display:inline-block; background:rgba(255,255,255,0.12); padding:6px 10px; border-radius:999px; font-weight:800; font-size:13px; }
+  .hero h1{ margin:12px 0 10px 0; font-family:"Poppins",sans-serif; font-size:36px; letter-spacing:1px; line-height:1; }
+  .hero p{ margin:0 0 18px 0; font-size:16px; opacity:0.98; max-width:560px; }
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-cta{ background:var(--leaf); color:white; padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:800; box-shadow:0 8px 22px rgba(95,164,94,0.12); }
+  .btn-cta.alt{ background:rgba(255,255,255,0.14); color:white; border:2px solid rgba(255,255,255,0.08); }
+  .btn-cta:hover{ transform:translateY(-4px); transition:all .18s ease; }
 
-    header p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
+  /* falling berries layer (parallax-ish) */
+  .berry-fall{ position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:1; }
+  .berry{ position:absolute; top:-10%; font-size:22px; opacity:0.9; animation:fall linear infinite; transform-origin:center; filter: drop-shadow(0 6px 8px rgba(0,0,0,0.12)); }
+  .b1{ left:6%; animation-duration:8.0s; animation-delay:0s;}
+  .b2{ left:18%; animation-duration:9.3s; animation-delay:0.4s; font-size:26px;}
+  .b3{ left:30%; animation-duration:8.6s; animation-delay:0.9s; font-size:20px;}
+  .b4{ left:44%; animation-duration:9.0s; animation-delay:1.1s; font-size:24px;}
+  .b5{ left:58%; animation-duration:7.8s; animation-delay:0.6s; font-size:22px;}
+  .b6{ left:72%; animation-duration:8.4s; animation-delay:1.4s; font-size:26px;}
+  .b7{ left:86%; animation-duration:9.6s; animation-delay:0.2s; font-size:20px;}
+  @keyframes fall{ 0%{ transform:translateY(-5vh) rotate(0deg); } 100%{ transform:translateY(110vh) rotate(360deg); } }
 
-    a.tombol {
-      background-color: #6ba368;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      display: inline-block;
-    }
+  /* ABOUT */
+  section.about{ margin-top:-18px; padding:26px 0; }
+  .about-card{ display:flex; gap:22px; background:linear-gradient(180deg,#fff,#fff8f8); padding:18px; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,0.04); align-items:center; z-index:2; position:relative; }
+  .about-img{ flex:0 0 42%; text-align:center; }
+  .about-img img{ width:100%; max-width:360px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); display:block; }
+  .about-txt{ flex:1; padding:6px 2px; }
+  .highlights{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .badge{ background:linear-gradient(180deg,#fff6f6,#fff2f2); padding:8px 12px; border-radius:12px; font-weight:700; color:var(--berry-1); box-shadow:0 6px 18px rgba(214,51,74,0.06); font-size:14px; }
 
-    a.tombol:hover {
-      background-color: #588f56;
-      transform: scale(1.05);
-    }
+  /* PRODUCTS */
+  .section-title{ text-align:left; margin:28px 0 6px 0; }
+  .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:start; }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-      animation: fadeInUp 1s ease;
-    }
+  .big-card{ background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 12px 34px rgba(0,0,0,0.06); display:flex; flex-direction:column; }
+  .big-card img{ width:100%; height:320px; object-fit:cover; display:block; transition:transform .45s ease; }
+  .big-card .body{ padding:18px; }
+  .big-card img:hover{ transform:scale(1.03); }
 
-    h2 {
-      color: #d6334a;
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 30px;
-    }
+  .stack{ display:flex; flex-direction:column; gap:14px; }
+  .small-card{ display:flex; gap:12px; align-items:center; padding:10px; border-radius:12px; background:var(--card); box-shadow:0 10px 22px rgba(0,0,0,0.04); }
+  .small-card img{ width:120px; height:92px; object-fit:cover; border-radius:8px; flex-shrink:0; }
 
-    /* ABOUT */
-    .about {
-      text-align: center;
-    }
+  .prod-title{ color:var(--berry-1); font-weight:800; margin:0 0 8px 0; font-size:16px; }
+  .prod-desc{ margin:0 0 10px 0; color:#444; line-height:1.5; font-size:14px; }
+  .prod-meta{ font-weight:800; margin-bottom:8px; color:#222; }
 
-    .about img {
-      width: 70%;
-      border-radius: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
+  .prod-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
 
-    .about img:hover {
-      transform: scale(1.03);
-    }
+  .btn-buy{
+    background:linear-gradient(180deg,var(--berry-1),var(--berry-2));
+    color:white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:800; box-shadow:0 10px 24px rgba(214,51,74,0.12);
+  }
+  .btn-buy.secondary{ background:transparent; border:2px solid var(--berry-1); color:var(--berry-1); padding:8px 12px; font-weight:800; }
 
-    /* PRODUK */
-    .produk {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
+  .olahan-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:14px; }
+  .card-olahan{ background:var(--card); border-radius:12px; padding:12px; box-shadow:0 10px 26px rgba(0,0,0,0.04); text-align:center; }
+  .card-olahan img{ width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
 
-    .card {
-      background: white;
-      border-radius: 25px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-      width: 420px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 25px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+  /* PROMO */
+  .promo{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+  .promo-card{ flex:1 1 320px; background:var(--cream); padding:14px; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;}
+  .promo-card.ending{ background:linear-gradient(90deg,#ffd6d6,#fff2f2); }
+  .promo-title{ font-weight:900; color:var(--berry-1); margin-bottom:6px; }
+  .countdown{ font-weight:900; color:#521226; margin-top:8px; font-size:18px; }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
+  /* STEPS */
+  .steps{ display:flex; gap:12px; margin-top:18px; justify-content:space-between; flex-wrap:wrap; }
+  .step{ flex:1 1 160px; background:linear-gradient(180deg,#fff,#fff9f9); padding:12px; border-radius:10px; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,0.04); }
+  .emoji{ font-size:26px; display:block; margin-bottom:6px; }
 
-    .card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
+  /* FOOTER */
+  footer{ background:var(--berry-1); color:white; padding:22px 16px; margin-top:28px; border-top-left-radius:12px; border-top-right-radius:12px; text-align:center;}
+  footer a{ color:white; text-decoration:none; font-weight:700; margin:0 8px; }
 
-    .card h3 {
-      color: #d6334a;
-      margin-top: 20px;
-      margin-bottom: 12px;
-    }
+  /* fade-up reveal */
+  .fade-up{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; will-change:transform,opacity; }
+  .fade-up.show{ opacity:1; transform:none; }
 
-    .card p {
-      line-height: 1.7;
-      margin: 0 25px 25px 25px;
-      font-size: 15px;
-      color: #444;
-    }
+  /* hover micro-interactions */
+  .big-card:hover, .card-olahan:hover, .small-card:hover{ transform:translateY(-6px); transition:transform .28s ease; box-shadow:0 18px 36px rgba(0,0,0,0.08); }
 
-    /* PROMO */
-    .promo-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .promo-card {
-      border-radius: 25px;
-      padding: 35px;
-      width: 430px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .promo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .bundle {
-      background: #ffe7c2;
-    }
-
-    .akhir-tahun {
-      background: #ffd0d0;
-    }
-
-    /* PEMESANAN */
-    .pemesanan ol {
-      max-width: 600px;
-      margin: 20px auto;
-      line-height: 1.9;
-      font-size: 16px;
-    }
-
-    /* FOOTER */
-    footer {
-      background-color: #d6334a;
-      color: white;
-      text-align: center;
-      padding: 40px 10px;
-      margin-top: 60px;
-      border-top-left-radius: 60px;
-      border-top-right-radius: 60px;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: underline;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .about img {
-        width: 90%;
-      }
-      .card, .promo-card {
-        width: 90%;
-      }
-    }
-  </style>
+  /* responsive */
+  @media (max-width:900px){
+    .grid{ grid-template-columns:1fr; }
+    .olahan-grid{ grid-template-columns:1fr; }
+    .about-card{ flex-direction:column; text-align:left; gap:12px; }
+    .hero-wrap{ flex-direction:column; align-items:flex-start; gap:18px; }
+    .berry{ display:none; } /* hide falling emoji on small screens for clarity */
+  }
+</style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header id="beranda">
-    <h1>PURE BERRY</h1>
-    <p>Stroberi Segar Langsung dari Petani 🍓</p>
-    <a href="#produk" class="tombol">Lihat Produk</a>
+
+  <!-- top nav -->
+  <div class="topbar">
+    <a href="#produk">Produk</a>
+    <a href="#promo">Promo</a>
+    <a href="#pemesanan">Cara Pesan</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="berry-fall" aria-hidden="true" id="berry-layer">
+      <div class="berry b1">🍓</div>
+      <div class="berry b2">🍓</div>
+      <div class="berry b3">🍓</div>
+      <div class="berry b4">🍓</div>
+      <div class="berry b5">🍓</div>
+      <div class="berry b6">🍓</div>
+      <div class="berry b7">🍓</div>
+    </div>
+
+    <div class="hero-wrap container">
+      <div class="hero-left">
+        <div class="hero-kicker fade-up" data-fade>Segar &amp; Langsung dari Kebun</div>
+        <h1 class="fade-up" data-fade>PURE BERRY</h1>
+        <p class="fade-up" data-fade>Stroberi segar langsung dari petani di Bogor — tanpa perantara &amp; tanpa pengawet. Rasakan manis alami setiap gigitan.</p>
+        <div class="cta-row fade-up" data-fade>
+          <a class="btn-cta" href="#produk">Lihat Produk</a>
+          <a class="btn-cta alt" href="#promo">Cek Promo</a>
+        </div>
+      </div>
+
+      <div class="hero-right" style="flex:0 0 300px; text-align:right;">
+        <div style="background:rgba(255,255,255,0.08); padding:12px; border-radius:12px; backdrop-filter: blur(4px); display:inline-block;" class="fade-up" data-fade>
+          <div style="font-weight:800; font-size:14px;">Pesan Cepat</div>
+          <div style="font-size:13px; margin-top:6px;">Dipanen pagi & dikirim hari yang sama (wilayah Bogor).</div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- TENTANG KAMI -->
-  <section class="about" id="about">
-    <h2>Tentang Kami</h2>
-    <img src="tentang kami stroberi.jpg" alt="Tentang Kami">
-    <p>
-      Pure Berry adalah inisiatif lokal yang bekerja sama langsung dengan petani stroberi di Bogor.  
-      Kami membantu para petani menjual hasil panennya agar bisa menjangkau lebih banyak pelanggan tanpa perantara panjang.
-    </p>
-    <p>
-      Semua produk Pure Berry — baik stroberi segar maupun olahan — dijamin berasal dari bahan alami tanpa pengawet.  
-      Kami percaya, setiap buah punya cerita dan setiap rasa manisnya membawa manfaat bagi banyak orang.
-    </p>
-  </section>
+  <main class="container" style="padding:22px 0;">
 
-  <!-- PRODUK -->
-  <section id="produk">
-    <h2>Produk Kami</h2>
-    <h3 style="text-align:center;">🍓 Stroberi Segar</h3>
-    <div class="produk">
-      <div class="card">
-        <img src="stroberi pack.jpg" alt="Strawberry Pack">
-        <h3>Pure Berry Fresh Pack</h3>
-        <p>
-          Stroberi segar pilihan langsung dari kebun petani. Cocok untuk dikonsumsi langsung atau dijadikan topping.
-        </p>
-        <a href="https://wa.me/6287799449884?text=Halo%20Pure%20Berry!%20Saya%20ingin%20pesan%20Pure%20Berry%20Fresh%20Pack.%20Berapa%20stok%20tersedia?" class="tombol">Pesan Sekarang</a>
+    <!-- ABOUT -->
+    <section class="about fade-up" id="about" aria-labelledby="about-title" data-fade>
+      <div class="about-card">
+        <div class="about-img">
+          <img src="tentang kami stroberi.jpg" alt="Petani dan kebun stroberi">
+        </div>
+        <div class="about-txt">
+          <h2 id="about-title">Tentang Kami</h2>
+          <p>Pure Berry membantu petani stroberi lokal di Bogor menjual panen langsung ke pembeli, memotong rantai perantara agar petani mendapat nilai jual lebih adil dan konsumen mendapatkan buah yang lebih segar.</p>
+          <p>Kami panen setiap pagi, sortir dengan teliti, dan kemas manual agar kualitas sampai di tangan Anda tetap prima.</p>
+          <div class="highlights" aria-hidden="true">
+            <div class="badge">🍓 Langsung Dari Petani</div>
+            <div class="badge">🌱 Tanpa Pengawet</div>
+            <div class="badge">🚚 Pengiriman Cepat (Bogor)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="produk" class="fade-up" data-fade style="margin-top:18px;">
+      <div class="section-title">
+        <h2>Produk Pilihan</h2>
+        <p style="color:#555; margin-top:8px;">Dibagi jadi Stroberi Segar &amp; Olahan — pilih, pesan cepat via WhatsApp.</p>
       </div>
 
-      <div class="card">
-        <img src="frozen.jpg" alt="Strawberry Frozen">
-        <h3>Pure Berry Frozen Pack</h3>
-        <p>
-          Stroberi segar yang dibekukan agar kesegarannya tetap terjaga hingga ke tanganmu.
-        </p>
-        <a href="https://wa.me/6287799449884?text=Halo%20Pure%20Berry!%20Saya%20ingin%20pesan%20Pure%20Berry%20Frozen%20Pack.%20Berapa%20stok%20tersedia?" class="tombol">Pesan Sekarang</a>
-      </div>
-    </div>
+      <!-- Stroberi Segar asymmetric -->
+      <h3 style="color:var(--berry-1); margin-top:14px;">🍓 Stroberi Segar</h3>
+      <div class="grid" style="margin-top:12px;">
+        <!-- big left -->
+        <div class="big-card">
+          <img src="stroberi pack.jpg" alt="Pure Berry Fresh Pack">
+          <div class="body">
+            <div class="prod-title">Pure Berry Fresh Pack (250 gr)</div>
+            <div class="prod-desc">Stroberi segar pilihan, dipetik pagi. Cocok langsung dimakan atau jadi topping.</div>
+            <div class="prod-meta">Rp25.000 / pack</div>
+            <div class="prod-actions">
+              <a class="btn-buy" data-product="Pure Berry Fresh Pack (250 gr)">Pesan Sekarang</a>
+              <a class="btn-buy secondary" href="#pemesanan">Cara Pesan</a>
+            </div>
+          </div>
+        </div>
 
-    <h3 style="text-align:center; margin-top:60px;">🍯 Olahan Stroberi</h3>
-    <div class="produk">
-      <div class="card">
-        <img src="sirup stroberi.jpg" alt="Strawberry Syrup">
-        <h3>Pure Berry Syrup</h3>
-        <p>
-          Syrup manis alami dari stroberi murni, tanpa pewarna buatan. Cocok untuk minuman dingin atau dessert.
-        </p>
-        <a href="https://wa.me/6287799449884?text=Halo%20Pure%20Berry!%20Saya%20ingin%20pesan%20Pure%20Berry%20Syrup.%20Apakah%20masih%20tersedia?" class="tombol">Pesan Sekarang</a>
-      </div>
-      <div class="card">
-        <img src="dessert stroberi.jpg" alt="Strawberry Dessert">
-        <h3>Pure Berry Dessert Cup</h3>
-        <p>
-          Dessert segar dengan lapisan stroberi asli dan krim lembut, cocok untuk cemilan manis.
-        </p>
-        <a href="https://wa.me/6287799449884?text=Halo%20Pure%20Berry!%20Saya%20ingin%20pesan%20Pure%20Berry%20Dessert%20Cup.%20Boleh%20info%20harganya?" class="tombol">Pesan Sekarang</a>
-      </div>
-    </div>
-  </section>
+        <!-- right stack -->
+        <div class="stack">
+          <div class="small-card">
+            <img src="frozen.jpg" alt="Pure Berry Frozen Pack">
+            <div class="body">
+              <div class="prod-title" style="font-size:15px;">Pure Berry Frozen Pack (250 gr)</div>
+              <div class="prod-desc" style="font-size:13px;">Quick-freeze, pas buat smoothie atau stok bahan kue.</div>
+              <div class="prod-meta" style="font-size:13px;">Rp28.000 / pack</div>
+              <div style="margin-top:8px;">
+                <a class="btn-buy" data-product="Pure Berry Frozen Pack (250 gr)">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
 
-  <!-- PROMO -->
-  <section id="promo">
-    <h2>Promo Menarik 🎁</h2>
-    <div class="promo-container">
-      <div class="promo-card bundle">
-        <h3>💕 Promo Bundle Hemat (Sepanjang Tahun)</h3>
-        <p>Nikmati paket hemat untuk pecinta stroberi! 🌸</p>
-        <p><strong>Beli 2 produk olahan</strong> (selai, syrup, dessert cup, dll) dapat potongan <strong>15%</strong>.</p>
+          <div class="small-card">
+            <img src="stroberi pack.jpg" alt="Pure Berry Mini">
+            <div class="body">
+              <div class="prod-title" style="font-size:15px;">Pure Berry Mini Pack (150 gr)</div>
+              <div class="prod-desc" style="font-size:13px;">Ukuran kecil untuk cemilan atau bekal anak.</div>
+              <div class="prod-meta" style="font-size:13px;">Rp15.000 / pack</div>
+              <div style="margin-top:8px;">
+                <a class="btn-buy" data-product="Pure Berry Mini Pack (150 gr)">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="promo-card akhir-tahun">
-        <h3>🎄 Promo Akhir Tahun (1 November – 31 Desember)</h3>
-        <p>Rayakan akhir tahun dengan manisnya Pure Berry!</p>
-        <p>🎁 Gratis ongkir wilayah Bogor untuk pembelian minimal <strong>Rp100.000</strong>.</p>
-        <p>✨ Bonus mini jam stroberi untuk 20 pembeli pertama di bulan Desember!</p>
+      <!-- Olahan -->
+      <h3 style="color:var(--berry-1); margin-top:26px;">🍯 Olahan Stroberi</h3>
+      <div class="olahan-grid">
+        <div class="card-olahan fade-up" data-fade>
+          <img src="sirup stroberi.jpg" alt="Pure Berry Syrup">
+          <div class="prod-title">Pure Berry Syrup (250 ml)</div>
+          <div class="prod-desc">Sari stroberi murni untuk minuman &amp; topping.</div>
+          <div class="prod-meta">Rp30.000 / botol</div>
+          <div style="margin-top:8px;">
+            <a class="btn-buy" data-product="Pure Berry Syrup (250 ml)">Pesan Sekarang</a>
+          </div>
+        </div>
+
+        <div class="card-olahan fade-up" data-fade>
+          <img src="dessert stroberi.jpg" alt="Pure Berry Dessert Cup">
+          <div class="prod-title">Pure Berry Dessert Cup</div>
+          <div class="prod-desc">Lapisan stroberi segar + krim lembut dan crumble renyah.</div>
+          <div class="prod-meta">Rp25.000 / cup</div>
+          <div style="margin-top:8px;">
+            <a class="btn-buy" data-product="Pure Berry Dessert Cup">Pesan Sekarang</a>
+          </div>
+        </div>
+
+        <div class="card-olahan fade-up" data-fade>
+          <img src="jam stroberi.jpg" alt="Pure Berry Jam">
+          <div class="prod-title">Pure Berry Jam (Selai Stroberi)</div>
+          <div class="prod-desc">Selai homemade tanpa pengawet.</div>
+          <div class="prod-meta">Rp30.000 / jar</div>
+          <div style="margin-top:8px;">
+            <a class="btn-buy" data-product="Pure Berry Jam (Selai Stroberi)">Pesan Sekarang</a>
+          </div>
+        </div>
+
+        <div class="card-olahan fade-up" data-fade>
+          <img src="gift box stroberi.jpg" alt="Pure Berry Gift Box">
+          <div class="prod-title">Pure Berry Gift Box</div>
+          <div class="prod-desc">Paket hadiah: stroberi + selai + syrup mini.</div>
+          <div class="prod-meta">Rp70.000 / box</div>
+          <div style="margin-top:8px;">
+            <a class="btn-buy" data-product="Pure Berry Gift Box">Pesan Sekarang</a>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CARA PEMESANAN -->
-  <section class="pemesanan" id="pemesanan">
-    <h2>Cara Pemesanan 🛒</h2>
-    <ol>
-      <li>Pilih produk yang ingin kamu pesan di bagian “Produk Kami”.</li>
-      <li>Klik tombol “Pesan Sekarang” untuk diarahkan ke WhatsApp dengan format otomatis.</li>
-      <li>Ketik jumlah pesanan dan konfirmasi alamat pengirimanmu.</li>
-      <li>Tunggu produk segar dari Pure Berry sampai di rumahmu!</li>
-    </ol>
-  </section>
+    <!-- PROMO -->
+    <section id="promo" class="fade-up" data-fade style="margin-top:22px;">
+      <h2 style="text-align:left; color:var(--berry-1);">Promo Menarik</h2>
+      <div class="promo">
+        <div class="promo-card">
+          <div>
+            <div class="promo-title">💕 Bundle Hemat (Sepanjang Tahun)</div>
+            <p style="margin:6px 0 0 0;">Beli 2 produk olahan (selai, syrup, dessert cup) dapat potongan <strong>15%</strong>.</p>
+            <p style="margin-top:10px;font-size:13px;color:#444;">Promo tetap — berlaku setiap hari selama stok tersedia.</p>
+          </div>
+          <div style="margin-top:14px;">
+            <a class="btn-buy" href="#produk">Ambil Bundle</a>
+          </div>
+        </div>
 
-  <!-- KONTAK -->
+        <div class="promo-card ending">
+          <div>
+            <div class="promo-title">🎄 Promo Akhir Tahun</div>
+            <p style="margin:6px 0 0 0;">Gratis ongkir wilayah Bogor untuk pembelian minimal <strong>Rp100.000</strong>.</p>
+            <p style="margin-top:8px;">✨ Bonus mini jam stroberi untuk 20 pembeli pertama di Desember.</p>
+            <div class="countdown" id="countdown">-- hari --:--:--</div>
+            <p style="margin-top:8px;font-size:13px;color:#444;">Periode: <strong>1 November – 31 Desember</strong></p>
+          </div>
+          <div style="margin-top:14px;">
+            <a class="btn-buy" href="#produk">Pesan Paket Akhir Tahun</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARA PEMESANAN -->
+    <section id="pemesanan" class="fade-up" data-fade style="margin-top:20px;">
+      <h2 style="color:var(--berry-1);">Cara Pemesanan</h2>
+      <div class="steps" aria-hidden="true">
+        <div class="step"><span class="emoji">🧺</span><p>Pilih Produk</p></div>
+        <div class="step"><span class="emoji">💬</span><p>Pesan via WhatsApp</p></div>
+        <div class="step"><span class="emoji">💳</span><p>Konfirmasi Pembayaran</p></div>
+        <div class="step"><span class="emoji">🚚</span><p>Dikirim Segar</p></div>
+      </div>
+      <p style="margin-top:12px;color:#555;">Klik <strong>Pesan Sekarang</strong> pada produk pilihanmu. Chat WhatsApp akan otomatis terbuka dengan template pesan pembelian — tinggal isi jumlah & alamat, lalu kirim.</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer id="kontak">
-    <p>Hubungi kami di <a href="https://wa.me/6287799449884">WhatsApp: 0877 9944 9884</a></p>
-    <p>Pure Berry — Dari Petani ke Meja Kamu 🍓</p>
+    <div style="font-weight:900; font-size:18px;">Hubungi Kami</div>
+    <div style="margin:10px 0;">
+      <a href="https://wa.me/6287799449884" target="_blank">WhatsApp: 0877 9944 9884</a> |
+      <a href="mailto:pureberry.id@gmail.com">pureberry.id@gmail.com</a> |
+      <a href="https://instagram.com/pureberry.id" target="_blank">@pureberry.id</a>
+    </div>
+    <div style="font-size:13px; opacity:0.95; margin-top:8px;">Pure Berry — Dari Petani ke Meja Kamu 🍓</div>
   </footer>
+
+<script>
+/* ---------- Countdown (to Dec 31 inclusive) ---------- */
+(function(){
+  const el = document.getElementById('countdown');
+  if(!el) return;
+  function update(){
+    const now = new Date();
+    let year = now.getFullYear();
+    let end = new Date(year,11,31,23,59,59);
+    if(now > end){ end = new Date(year+1,11,31,23,59,59); }
+    const diff = end - now;
+    if(diff <= 0){ el.textContent = "Promo berakhir"; return; }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hrs  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    el.textContent = ${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')};
+  }
+  update(); setInterval(update,1000);
+})();
+
+/* ---------- WhatsApp prefill for buy buttons ---------- */
+(function(){
+  const phone = "6287799449884";
+  const btns = document.querySelectorAll('.btn-buy');
+  btns.forEach(btn=>{
+    // if already anchor with href to anchor, don't override
+    if(btn.getAttribute('href') && btn.getAttribute('href').startsWith('#')) return;
+    const product = btn.getAttribute('data-product') || btn.textContent.trim();
+    const raw = Halo Pure Berry! 🍓\nSaya ingin memesan:\n- Produk: ${product}\n- Jumlah: [isi jumlah]\n- Alamat Pengiriman: [isi alamat]\n\nTerima kasih!;
+    const encoded = encodeURIComponent(raw);
+    const href = https://wa.me/${phone}?text=${encoded};
+    btn.setAttribute('href', href);
+    btn.setAttribute('target','_blank');
+    btn.style.cursor = 'pointer';
+  });
+})();
+
+/* ---------- Parallax-ish subtle movement for berry layer ---------- */
+(function(){
+  const layer = document.getElementById('berry-layer');
+  if(!layer) return;
+  window.addEventListener('scroll', ()=>{
+    const sc = window.scrollY;
+    // small translate to mimic parallax (clamped)
+    const t = Math.min(80, sc * 0.12);
+    layer.style.transform = translateY(${t}px);
+  }, {passive:true});
+})();
+
+/* ---------- Fade-up reveal on scroll ---------- */
+(function(){
+  const els = document.querySelectorAll('[data-fade], .fade-up');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+      }
+    });
+  },{threshold:0.12});
+  els.forEach(el=>{
+    el.classList.add('fade-up');
+    io.observe(el);
+  });
+})();
+</script>
+
 </body>
 </html>
