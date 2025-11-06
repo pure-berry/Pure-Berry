@@ -6,114 +6,111 @@
 <title>Pure Berry | Stroberi Segar dari Petani</title>
 <style>
   :root{
-    --berry-1:#D6334A;   /* utama */
-    --berry-2:#E94F64;   /* aksen */
-    --pink-soft:#FFD6D6; /* bg/soft */
-    --leaf:#6BA368;      /* tombol */
-    --cream:#FFF8F8;
-    --text:#333;
-    --card:#fff;
+    --berry-1:#D43A4A;    /* warm berry (main) */
+    --berry-2:#E86878;    /* accent */
+    --pink-soft:#FFE7E9;  /* soft background */
+    --leaf:#5FA45E;       /* button accent */
+    --cream:#FFF8F6;
+    --text:#373737;
+    --card:#ffffff;
   }
   *{box-sizing:border-box}
+  html,body{height:100%}
   body{
     margin:0;
-    font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#fff8f9 0%, #fffefa 100%);
+    font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:linear-gradient(180deg,#fff9fa 0%, #fffefe 100%);
     color:var(--text);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     scroll-behavior:smooth;
   }
 
-  /* small top nav */
-  .topbar{
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    padding:10px 14px;
-    background:transparent;
-    font-weight:700;
-    font-size:14px;
-  }
-  .topbar a{ color:var(--text); text-decoration:none; padding:6px 8px; border-radius:8px; }
-  .topbar a:hover{ background:rgba(214,51,74,0.06); color:var(--berry-1); }
-
+  /* container */
   .container{ max-width:1100px; margin:0 auto; padding:0 18px; }
+
+  /* top nav */
+  .topbar{
+    display:flex; justify-content:center; gap:18px; padding:12px 0; font-weight:700; font-size:14px;
+    position:sticky; top:0; background:rgba(255,255,255,0.6); backdrop-filter: blur(6px); z-index:90;
+    border-bottom:1px solid rgba(0,0,0,0.03);
+  }
+  .topbar a{ color:var(--text); text-decoration:none; padding:6px 10px; border-radius:8px; }
+  .topbar a:hover{ background:rgba(212,58,74,0.06); color:var(--berry-1); }
 
   /* HERO */
   header.hero{
-    background: linear-gradient(90deg,var(--berry-1), var(--berry-2) 55%, rgba(255,214,214,0.95));
+    background: linear-gradient(90deg, rgba(212,58,74,0.98), rgba(232,104,120,0.95) 60%, rgba(255,230,230,0.95));
     color:white;
-    padding:48px 0;
+    padding:56px 0;
     position:relative;
     overflow:hidden;
   }
   .hero-wrap{ display:flex; gap:24px; align-items:center; justify-content:space-between; max-width:1100px; margin:0 auto; padding:0 18px; }
   .hero-left{ flex:1 1 520px; }
   .hero-kicker{ display:inline-block; background:rgba(255,255,255,0.12); padding:6px 10px; border-radius:999px; font-weight:800; font-size:13px; }
-  .hero h1{ margin:12px 0 10px 0; font-family:"Poppins",sans-serif; font-size:36px; letter-spacing:1px;}
+  .hero h1{ margin:12px 0 10px 0; font-family:"Poppins",sans-serif; font-size:36px; letter-spacing:1px; line-height:1; }
   .hero p{ margin:0 0 18px 0; font-size:16px; opacity:0.98; max-width:560px; }
   .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
-  .btn-cta{ background:var(--leaf); color:white; padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:800; box-shadow:0 8px 22px rgba(107,163,104,0.12); }
+  .btn-cta{ background:var(--leaf); color:white; padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:800; box-shadow:0 8px 22px rgba(95,164,94,0.12); }
   .btn-cta.alt{ background:rgba(255,255,255,0.14); color:white; border:2px solid rgba(255,255,255,0.08); }
   .btn-cta:hover{ transform:translateY(-4px); transition:all .18s ease; }
 
-  /* playful falling berries (emoji) */
-  .berry-fall{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-  .berry{ position:absolute; top:-10%; font-size:22px; opacity:0.95; animation:fall linear infinite; }
-  .b1{ left:6%; animation-duration:8s; animation-delay:0s;}
-  .b2{ left:22%; animation-duration:9s; animation-delay:0.6s; font-size:26px;}
-  .b3{ left:40%; animation-duration:7.6s; animation-delay:0.2s; font-size:20px;}
-  .b4{ left:60%; animation-duration:8.8s; animation-delay:1s; font-size:24px;}
-  .b5{ left:78%; animation-duration:9.4s; animation-delay:0.3s; font-size:22px;}
+  /* falling berries layer (parallax-ish) */
+  .berry-fall{ position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:1; }
+  .berry{ position:absolute; top:-10%; font-size:22px; opacity:0.9; animation:fall linear infinite; transform-origin:center; filter: drop-shadow(0 6px 8px rgba(0,0,0,0.12)); }
+  .b1{ left:6%; animation-duration:8.0s; animation-delay:0s;}
+  .b2{ left:18%; animation-duration:9.3s; animation-delay:0.4s; font-size:26px;}
+  .b3{ left:30%; animation-duration:8.6s; animation-delay:0.9s; font-size:20px;}
+  .b4{ left:44%; animation-duration:9.0s; animation-delay:1.1s; font-size:24px;}
+  .b5{ left:58%; animation-duration:7.8s; animation-delay:0.6s; font-size:22px;}
+  .b6{ left:72%; animation-duration:8.4s; animation-delay:1.4s; font-size:26px;}
+  .b7{ left:86%; animation-duration:9.6s; animation-delay:0.2s; font-size:20px;}
   @keyframes fall{ 0%{ transform:translateY(-5vh) rotate(0deg); } 100%{ transform:translateY(110vh) rotate(360deg); } }
 
   /* ABOUT */
-  section.about{ margin-top:-20px; padding:26px; }
-  .about-card{ display:flex; gap:22px; background:linear-gradient(180deg,#fff,#fff8f8); padding:18px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.04); align-items:center; }
-  .about-img{ flex:0 0 44%; text-align:center; }
-  .about-img img{ width:100%; max-width:360px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); }
+  section.about{ margin-top:-18px; padding:26px 0; }
+  .about-card{ display:flex; gap:22px; background:linear-gradient(180deg,#fff,#fff8f8); padding:18px; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,0.04); align-items:center; z-index:2; position:relative; }
+  .about-img{ flex:0 0 42%; text-align:center; }
+  .about-img img{ width:100%; max-width:360px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); display:block; }
   .about-txt{ flex:1; padding:6px 2px; }
   .highlights{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
-  .badge{ background:linear-gradient(180deg,#fff6f6,#fff2f2); padding:8px 12px; border-radius:12px; font-weight:800; color:var(--berry-1); box-shadow:0 6px 18px rgba(214,51,74,0.06); }
+  .badge{ background:linear-gradient(180deg,#fff6f6,#fff2f2); padding:8px 12px; border-radius:12px; font-weight:700; color:var(--berry-1); box-shadow:0 6px 18px rgba(214,51,74,0.06); font-size:14px; }
 
-  /* PRODUCTS - asymmetric grid */
-  .section-title{ text-align:center; margin:28px 0 6px 0; }
+  /* PRODUCTS */
+  .section-title{ text-align:left; margin:28px 0 6px 0; }
   .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:start; }
 
-  .big-card{ background:var(--card); border-radius:14px; overflow:hidden; box-shadow:0 10px 28px rgba(0,0,0,0.06); }
-  .big-card img{ width:100%; height:320px; object-fit:cover; display:block; transition:transform .35s ease; }
-  .big-card .body{ padding:16px; }
+  .big-card{ background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 12px 34px rgba(0,0,0,0.06); display:flex; flex-direction:column; }
+  .big-card img{ width:100%; height:320px; object-fit:cover; display:block; transition:transform .45s ease; }
+  .big-card .body{ padding:18px; }
   .big-card img:hover{ transform:scale(1.03); }
 
   .stack{ display:flex; flex-direction:column; gap:14px; }
-  .small-card{ display:flex; gap:12px; align-items:center; padding:10px; border-radius:12px; background:var(--card); box-shadow:0 8px 18px rgba(0,0,0,0.04); }
+  .small-card{ display:flex; gap:12px; align-items:center; padding:10px; border-radius:12px; background:var(--card); box-shadow:0 10px 22px rgba(0,0,0,0.04); }
   .small-card img{ width:120px; height:92px; object-fit:cover; border-radius:8px; flex-shrink:0; }
 
-  .prod-title{ color:var(--berry-1); font-weight:900; margin:0 0 6px 0; font-size:16px; }
-  .prod-desc{ margin:0 0 10px 0; color:#4a4a4a; font-size:14px; }
-  .prod-meta{ font-weight:800; margin-bottom:6px; color:#222; }
+  .prod-title{ color:var(--berry-1); font-weight:800; margin:0 0 8px 0; font-size:16px; }
+  .prod-desc{ margin:0 0 10px 0; color:#444; line-height:1.5; font-size:14px; }
+  .prod-meta{ font-weight:800; margin-bottom:8px; color:#222; }
 
   .prod-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
 
   .btn-buy{
     background:linear-gradient(180deg,var(--berry-1),var(--berry-2));
-    color:white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:900; box-shadow:0 8px 22px rgba(214,51,74,0.12);
+    color:white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:800; box-shadow:0 10px 24px rgba(214,51,74,0.12);
   }
   .btn-buy.secondary{ background:transparent; border:2px solid var(--berry-1); color:var(--berry-1); padding:8px 12px; font-weight:800; }
 
-  /* Olahan grid */
-  .olahan-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:12px; }
-  .card-olahan{ background:var(--card); border-radius:12px; padding:12px; box-shadow:0 8px 18px rgba(0,0,0,0.04); text-align:center; }
-
-  .card-olahan img{ width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:8px; }
+  .olahan-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:14px; }
+  .card-olahan{ background:var(--card); border-radius:12px; padding:12px; box-shadow:0 10px 26px rgba(0,0,0,0.04); text-align:center; }
+  .card-olahan img{ width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
 
   /* PROMO */
   .promo{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
-  .promo-card{ flex:1 1 320px; background:var(--cream); padding:14px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;}
+  .promo-card{ flex:1 1 320px; background:var(--cream); padding:14px; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,0.04); display:flex; flex-direction:column; justify-content:space-between;}
   .promo-card.ending{ background:linear-gradient(90deg,#ffd6d6,#fff2f2); }
   .promo-title{ font-weight:900; color:var(--berry-1); margin-bottom:6px; }
-
   .countdown{ font-weight:900; color:#521226; margin-top:8px; font-size:18px; }
 
   /* STEPS */
@@ -122,23 +119,23 @@
   .emoji{ font-size:26px; display:block; margin-bottom:6px; }
 
   /* FOOTER */
-  footer{ background:var(--berry-1); color:white; padding:22px 16px; margin-top:28px; border-top-left-radius:16px; border-top-right-radius:16px; text-align:center;}
-  footer a{ color:white; text-decoration:none; font-weight:800; margin:0 8px; }
+  footer{ background:var(--berry-1); color:white; padding:22px 16px; margin-top:28px; border-top-left-radius:12px; border-top-right-radius:12px; text-align:center;}
+  footer a{ color:white; text-decoration:none; font-weight:700; margin:0 8px; }
 
-  /* playful entrance */
-  .fade-up{ opacity:0; transform:translateY(14px); animation: fadeUp .7s ease forwards; }
-  .delay-1{ animation-delay:.12s; } .delay-2{ animation-delay:.22s; } .delay-3{ animation-delay:.32s; }
-  @keyframes fadeUp{ to{ opacity:1; transform:none; } }
+  /* fade-up reveal */
+  .fade-up{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; will-change:transform,opacity; }
+  .fade-up.show{ opacity:1; transform:none; }
+
+  /* hover micro-interactions */
+  .big-card:hover, .card-olahan:hover, .small-card:hover{ transform:translateY(-6px); transition:transform .28s ease; box-shadow:0 18px 36px rgba(0,0,0,0.08); }
 
   /* responsive */
   @media (max-width:900px){
-    .hero-wrap{ flex-direction:column; align-items:flex-start; gap:18px; }
-    .about-card{ flex-direction:column; text-align:left; }
-    .about-img{ order:0; }
     .grid{ grid-template-columns:1fr; }
-    .stack{ order:2; }
     .olahan-grid{ grid-template-columns:1fr; }
-    .steps{ justify-content:space-between; }
+    .about-card{ flex-direction:column; text-align:left; gap:12px; }
+    .hero-wrap{ flex-direction:column; align-items:flex-start; gap:18px; }
+    .berry{ display:none; } /* hide falling emoji on small screens for clarity */
   }
 </style>
 </head>
@@ -154,7 +151,7 @@
 
   <!-- HERO -->
   <header class="hero" role="banner">
-    <div class="berry-fall" aria-hidden="true">
+    <div class="berry-fall" aria-hidden="true" id="berry-layer">
       <div class="berry b1">🍓</div>
       <div class="berry b2">🍓</div>
       <div class="berry b3">🍓</div>
@@ -162,26 +159,21 @@
       <div class="berry b5">🍓</div>
       <div class="berry b6">🍓</div>
       <div class="berry b7">🍓</div>
-      <div class="berry b8">🍓</div>
-      <div class="berry b9">🍓</div>
-      <div class="berry b10">🍓</div>
-      <div class="berry b11">🍓</div>
-      <div class="berry b12">🍓</div>
     </div>
 
     <div class="hero-wrap container">
-      <div class="hero-left fade-up delay-1">
-        <div class="hero-kicker">Segar & Langsung dari Kebun</div>
-        <h1>PURE BERRY</h1>
-        <p>Stroberi segar langsung dari petani di Bogor — tanpa perantara & tanpa pengawet. Rasakan manis alami setiap gigitan.</p>
-        <div class="cta-row">
+      <div class="hero-left">
+        <div class="hero-kicker fade-up" data-fade>Segar &amp; Langsung dari Kebun</div>
+        <h1 class="fade-up" data-fade>PURE BERRY</h1>
+        <p class="fade-up" data-fade>Stroberi segar langsung dari petani di Bogor — tanpa perantara &amp; tanpa pengawet. Rasakan manis alami setiap gigitan.</p>
+        <div class="cta-row fade-up" data-fade>
           <a class="btn-cta" href="#produk">Lihat Produk</a>
           <a class="btn-cta alt" href="#promo">Cek Promo</a>
         </div>
       </div>
 
       <div class="hero-right" style="flex:0 0 300px; text-align:right;">
-        <div style="background:rgba(255,255,255,0.08); padding:12px; border-radius:12px; backdrop-filter: blur(4px); display:inline-block;" class="fade-up delay-2">
+        <div style="background:rgba(255,255,255,0.08); padding:12px; border-radius:12px; backdrop-filter: blur(4px); display:inline-block;" class="fade-up" data-fade>
           <div style="font-weight:800; font-size:14px;">Pesan Cepat</div>
           <div style="font-size:13px; margin-top:6px;">Dipanen pagi & dikirim hari yang sama (wilayah Bogor).</div>
         </div>
@@ -192,7 +184,7 @@
   <main class="container" style="padding:22px 0;">
 
     <!-- ABOUT -->
-    <section class="about fade-up delay-2" id="about" aria-labelledby="about-title">
+    <section class="about fade-up" id="about" aria-labelledby="about-title" data-fade>
       <div class="about-card">
         <div class="about-img">
           <img src="tentang kami stroberi.jpg" alt="Petani dan kebun stroberi">
@@ -211,7 +203,7 @@
     </section>
 
     <!-- PRODUCTS -->
-    <section id="produk" class="fade-up delay-3" style="margin-top:18px;">
+    <section id="produk" class="fade-up" data-fade style="margin-top:18px;">
       <div class="section-title">
         <h2>Produk Pilihan</h2>
         <p style="color:#555; margin-top:8px;">Dibagi jadi Stroberi Segar &amp; Olahan — pilih, pesan cepat via WhatsApp.</p>
@@ -238,7 +230,7 @@
         <div class="stack">
           <div class="small-card">
             <img src="frozen.jpg" alt="Pure Berry Frozen Pack">
-            <div style="flex:1">
+            <div class="body">
               <div class="prod-title" style="font-size:15px;">Pure Berry Frozen Pack (250 gr)</div>
               <div class="prod-desc" style="font-size:13px;">Quick-freeze, pas buat smoothie atau stok bahan kue.</div>
               <div class="prod-meta" style="font-size:13px;">Rp28.000 / pack</div>
@@ -250,7 +242,7 @@
 
           <div class="small-card">
             <img src="stroberi pack.jpg" alt="Pure Berry Mini">
-            <div style="flex:1">
+            <div class="body">
               <div class="prod-title" style="font-size:15px;">Pure Berry Mini Pack (150 gr)</div>
               <div class="prod-desc" style="font-size:13px;">Ukuran kecil untuk cemilan atau bekal anak.</div>
               <div class="prod-meta" style="font-size:13px;">Rp15.000 / pack</div>
@@ -264,18 +256,18 @@
 
       <!-- Olahan -->
       <h3 style="color:var(--berry-1); margin-top:26px;">🍯 Olahan Stroberi</h3>
-      <div class="olahan-grid" style="margin-top:12px;">
-        <div class="card-olahan fade-up">
+      <div class="olahan-grid">
+        <div class="card-olahan fade-up" data-fade>
           <img src="sirup stroberi.jpg" alt="Pure Berry Syrup">
           <div class="prod-title">Pure Berry Syrup (250 ml)</div>
-          <div class="prod-desc">Sari stroberi murni untuk minuman & topping.</div>
+          <div class="prod-desc">Sari stroberi murni untuk minuman &amp; topping.</div>
           <div class="prod-meta">Rp30.000 / botol</div>
           <div style="margin-top:8px;">
             <a class="btn-buy" data-product="Pure Berry Syrup (250 ml)">Pesan Sekarang</a>
           </div>
         </div>
 
-        <div class="card-olahan fade-up">
+        <div class="card-olahan fade-up" data-fade>
           <img src="dessert stroberi.jpg" alt="Pure Berry Dessert Cup">
           <div class="prod-title">Pure Berry Dessert Cup</div>
           <div class="prod-desc">Lapisan stroberi segar + krim lembut dan crumble renyah.</div>
@@ -285,7 +277,7 @@
           </div>
         </div>
 
-        <div class="card-olahan fade-up">
+        <div class="card-olahan fade-up" data-fade>
           <img src="jam stroberi.jpg" alt="Pure Berry Jam">
           <div class="prod-title">Pure Berry Jam (Selai Stroberi)</div>
           <div class="prod-desc">Selai homemade tanpa pengawet.</div>
@@ -295,7 +287,7 @@
           </div>
         </div>
 
-        <div class="card-olahan fade-up">
+        <div class="card-olahan fade-up" data-fade>
           <img src="gift box stroberi.jpg" alt="Pure Berry Gift Box">
           <div class="prod-title">Pure Berry Gift Box</div>
           <div class="prod-desc">Paket hadiah: stroberi + selai + syrup mini.</div>
@@ -309,7 +301,7 @@
     </section>
 
     <!-- PROMO -->
-    <section id="promo" class="fade-up" style="margin-top:22px;">
+    <section id="promo" class="fade-up" data-fade style="margin-top:22px;">
       <h2 style="text-align:left; color:var(--berry-1);">Promo Menarik</h2>
       <div class="promo">
         <div class="promo-card">
@@ -339,7 +331,7 @@
     </section>
 
     <!-- CARA PEMESANAN -->
-    <section id="pemesanan" class="fade-up" style="margin-top:20px;">
+    <section id="pemesanan" class="fade-up" data-fade style="margin-top:20px;">
       <h2 style="color:var(--berry-1);">Cara Pemesanan</h2>
       <div class="steps" aria-hidden="true">
         <div class="step"><span class="emoji">🧺</span><p>Pilih Produk</p></div>
@@ -364,65 +356,70 @@
   </footer>
 
 <script>
-  // COUNTDOWN to Dec 31 local year
-  (function(){
-    const el = document.getElementById('countdown');
-    if(!el) return;
-    function update(){
-      const now = new Date();
-      let year = now.getFullYear();
-      const startPromo = new Date(year,10,1,0,0,0); // Nov 1
-      const endPromo = new Date(year,11,31,23,59,59); // Dec 31
-      // if now after endPromo for this year, set to next year
-      if(now > endPromo){
-        year = year + 1;
+/* ---------- Countdown (to Dec 31 inclusive) ---------- */
+(function(){
+  const el = document.getElementById('countdown');
+  if(!el) return;
+  function update(){
+    const now = new Date();
+    let year = now.getFullYear();
+    let end = new Date(year,11,31,23,59,59);
+    if(now > end){ end = new Date(year+1,11,31,23,59,59); }
+    const diff = end - now;
+    if(diff <= 0){ el.textContent = "Promo berakhir"; return; }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hrs  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    el.textContent = ${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')};
+  }
+  update(); setInterval(update,1000);
+})();
+
+/* ---------- WhatsApp prefill for buy buttons ---------- */
+(function(){
+  const phone = "6287799449884";
+  const btns = document.querySelectorAll('.btn-buy');
+  btns.forEach(btn=>{
+    // if already anchor with href to anchor, don't override
+    if(btn.getAttribute('href') && btn.getAttribute('href').startsWith('#')) return;
+    const product = btn.getAttribute('data-product') || btn.textContent.trim();
+    const raw = Halo Pure Berry! 🍓\nSaya ingin memesan:\n- Produk: ${product}\n- Jumlah: [isi jumlah]\n- Alamat Pengiriman: [isi alamat]\n\nTerima kasih!;
+    const encoded = encodeURIComponent(raw);
+    const href = https://wa.me/${phone}?text=${encoded};
+    btn.setAttribute('href', href);
+    btn.setAttribute('target','_blank');
+    btn.style.cursor = 'pointer';
+  });
+})();
+
+/* ---------- Parallax-ish subtle movement for berry layer ---------- */
+(function(){
+  const layer = document.getElementById('berry-layer');
+  if(!layer) return;
+  window.addEventListener('scroll', ()=>{
+    const sc = window.scrollY;
+    // small translate to mimic parallax (clamped)
+    const t = Math.min(80, sc * 0.12);
+    layer.style.transform = translateY(${t}px);
+  }, {passive:true});
+})();
+
+/* ---------- Fade-up reveal on scroll ---------- */
+(function(){
+  const els = document.querySelectorAll('[data-fade], .fade-up');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
       }
-      const end = new Date(year,11,31,23,59,59);
-      const diff = end - now;
-      if(diff <= 0){ el.textContent = "Promo berakhir"; return; }
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hrs = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-      const mins = Math.floor((diff%(1000*60*60))/(1000*60));
-      const secs = Math.floor((diff%(1000*60))/1000);
-      el.textContent = ${days} hari ${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')};
-    }
-    update(); setInterval(update,1000);
-  })();
-
-  // Set WhatsApp prefilled links for buy buttons
-  (function(){
-    const phone = "6287799449884";
-    const btns = document.querySelectorAll('.btn-buy');
-    btns.forEach(btn=>{
-      // ignore anchor buttons that already link to anchors (href starts with #)
-      if(btn.getAttribute('href') && btn.getAttribute('href').startsWith('#')) return;
-      const product = btn.getAttribute('data-product') || btn.closest('[data-product]')?.getAttribute('data-product') || btn.textContent.trim();
-      const template = Halo Pure Berry! 🍓%0ASaya ingin memesan:%0A- Produk: ${encodeURIComponent(product)}%0A- Jumlah: %5Bisi jumlah%5D%0A- Alamat Pengiriman: %5Bisi alamat%5D%0A%0ATerima kasih!;
-      const href = https://wa.me/${phone}?text=${template};
-      btn.setAttribute('href', href);
-      btn.setAttribute('target','_blank');
-      btn.style.cursor = 'pointer';
     });
-  })();
-
-  // small reveal animation trigger for elements with fade-up
-  (function(){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-          e.target.style.animationPlayState = 'running';
-        }
-      });
-    },{threshold:0.12});
-    document.querySelectorAll('.fade-up').forEach(el=>{
-      el.style.animationPlayState = 'paused';
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(14px)';
-      el.style.animation = 'fadeUp .6s ease forwards';
-      io.observe(el);
-    });
-  })();
+  },{threshold:0.12});
+  els.forEach(el=>{
+    el.classList.add('fade-up');
+    io.observe(el);
+  });
+})();
 </script>
 
 </body>
