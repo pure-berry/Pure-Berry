@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Berry | Stroberi Segar dari Petani</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #FFF8F8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: url('https://pin.it/5UUorA49g');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #D6334A;
+            text-align: center;
+        }
+
+        .about img {
+            display: block;
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .produk {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 420px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            color: #D6334A;
+        }
+
+        .promo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .promo-card {
+            border-radius: 20px;
+            padding: 30px;
+            width: 420px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .bundle {
+            background-color: #FCE6D1;
+        }
+
+        .akhir-tahun {
+            background-color: #FFD6D6;
+        }
+
+        .pemesanan ol {
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        footer {
+            background-color: #D6334A;
+            color: white;
+            text-align: center;
+            padding: 30px 10px;
+            margin-top: 40px;
+        }
+
+        a.tombol {
+            background-color: #6BA368;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        a.tombol:hover {
+            background-color: #588f56;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>PURE BERRY</h1>
+        <p>Stroberi Segar Langsung dari Petani 🍓</p>
+        <a href="#produk" class="tombol">Lihat Produk</a>
+    </header>
+
+    <!-- TENTANG KAMI -->
+    <section class="about" id="about">
+        <h2>Tentang Kami</h2>
+        <img src="https://pin.it/28i1SP6OA" alt="Petani Stroberi">
+        <p>Pure Berry adalah inisiatif lokal yang bekerja sama langsung dengan petani stroberi di Bogor. 
+        Kami membantu para petani menjual hasil panennya agar bisa menjangkau lebih banyak pelanggan tanpa perantara panjang.</p>
+        <p>Semua produk Pure Berry — baik stroberi segar maupun olahan — dijamin berasal dari bahan alami tanpa pengawet.
+        Kami percaya, setiap buah punya cerita dan setiap rasa manisnya membawa manfaat bagi banyak orang.</p>
+    </section>
+
+    <!-- PRODUK -->
+    <section id="produk">
+        <h2>Produk Kami</h2>
+        <h3 style="text-align:center;">🍓 Stroberi Segar</h3>
+        <div class="produk">
+            <div class="card">
+                <img src="https://pin.it/57SYFhseo" alt="Fresh Pack">
+                <h3>Pure Berry Fresh Pack</h3>
+                <p>Stroberi segar pilihan langsung dari kebun petani. Cocok untuk dikonsumsi langsung atau dijadikan topping.</p>
+                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+            </div>
+            <div class="card">
+                <img src="https://pin.it/2wlMoNKZQ" alt="Frozen Pack">
+                <h3>Pure Berry Frozen Pack</h3>
+                <p>Stroberi segar yang dibekukan agar kesegarannya tetap terjaga hingga ke tanganmu.</p>
+                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; margin-top:50px;">🍯 Olahan Stroberi</h3>
+        <div class="produk">
+            <div class="card">
+                <img src="https://pin.it/1Spm2BJ6D" alt="Syrup Stroberi">
+                <h3>Pure Berry Syrup</h3>
+                <p>Syrup manis alami dari stroberi murni, tanpa pewarna buatan. Cocok untuk minuman dingin atau dessert.</p>
+                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+            </div>
+            <div class="card">
+                <img src="https://pin.it/WlxKe5324" alt="Dessert Cup">
+                <h3>Pure Berry Dessert Cup</h3>
+                <p>Dessert segar dengan lapisan stroberi asli dan krim lembut, cocok untuk cemilan manis.</p>
+                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO -->
+    <section>
+        <h2>Promo Menarik 🎁</h2>
+        <div class="promo-container">
+
+            <!-- Promo Bundle Hemat -->
+            <div class="promo-card bundle">
+                <h3>💕 Promo Bundle Hemat (Sepanjang Tahun)</h3>
+                <p>Nikmati paket hemat untuk pecinta stroberi! 🌸</p>
+                <p><strong>Beli 2 produk olahan</strong> (selai, syrup, dessert cup, dll) dapat potongan <strong>15%</strong>.</p>
+                <p>Cocok buat kamu yang mau stok rasa manis alami setiap hari 🍓</p>
+            </div>
+
+            <!-- Promo Akhir Tahun -->
+            <div class="promo-card akhir-tahun">
+                <h3>🎄 Promo Akhir Tahun (1 November – 31 Desember)</h3>
+                <p>Rayakan akhir tahun dengan manisnya Pure Berry!</p>
+                <p>🎁 Gratis ongkir wilayah Bogor untuk pembelian minimal <strong>Rp100.000</strong>.</p>
+                <p>✨ Bonus mini jam stroberi untuk 20 pembeli pertama di bulan Desember!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CARA PEMESANAN -->
+    <section class="pemesanan">
+        <h2>Cara Pemesanan 🛒</h2>
+        <ol>
+            <li>Pilih produk yang ingin kamu pesan di bagian “Produk Kami”.</li>
+            <li>Klik tombol “Pesan Sekarang” untuk diarahkan ke WhatsApp.</li>
+            <li>Ketik nama produk dan jumlah yang diinginkan.</li>
+            <li>Konfirmasi alamat pengiriman dan tunggu produk segarmu datang!</li>
+        </ol>
+    </section>
+
+    <!-- KONTAK -->
+    <footer>
+        <p>Hubungi kami di <a href="https://wa.me/6287799449884" style="color:white; text-decoration:underline;">WhatsApp: 0877 9944 9884</a></p>
+        <p>Pure Berry — Dari Petani ke Meja Kamu 🍓</p>
+    </footer>
+
+</body>
+</html>
