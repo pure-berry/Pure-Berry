@@ -1,230 +1,305 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pure Berry | Stroberi Segar dari Petani</title>
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #FFF8F8;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pure Berry | Stroberi Segar dari Petani</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        header {
-            background-image: <img src="header stroberi.jpg" alt="Strawberry segar"> ;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff8f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
-        header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+    /* HEADER */
+    header {
+      background-color: #f9b5c2;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeIn 1.5s ease;
+    }
 
-        header p {
-            font-size: 18px;
-        }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
 
-        section {
-            padding: 50px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    header p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-        h2 {
-            font-family: 'Poppins', sans-serif;
-            color: #D6334A;
-            text-align: center;
-        }
+    a.tombol {
+      background-color: #6ba368;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        .about img {
-            display: block;
-            width: 100%;
-            border-radius: 20px;
-            margin-bottom: 20px;
-        }
+    a.tombol:hover {
+      background-color: #588f56;
+      transform: scale(1.05);
+    }
 
-        .produk {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 40px;
-            margin-top: 40px;
-        }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1s ease;
+    }
 
-        .card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 420px;
-            overflow: hidden;
-            text-align: center;
-            padding-bottom: 20px;
-        }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      color: #d6334a;
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+    /* ABOUT */
+    .about {
+      text-align: center;
+    }
 
-        .card h3 {
-            color: #D6334A;
-        }
+    .about img {
+      width: 60%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-        .promo-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
+    .about img:hover {
+      transform: scale(1.03);
+    }
 
-        .promo-card {
-            border-radius: 20px;
-            padding: 30px;
-            width: 420px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+    .produk {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 40px;
+      margin-top: 40px;
+    }
 
-        .bundle {
-            background-color: #FCE6D1;
-        }
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 420px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
 
-        .akhir-tahun {
-            background-color: #FFD6D6;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .pemesanan ol {
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.8;
-        }
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
 
-        footer {
-            background-color: #D6334A;
-            color: white;
-            text-align: center;
-            padding: 30px 10px;
-            margin-top: 40px;
-        }
+    .card h3 {
+      color: #d6334a;
+    }
 
-        a.tombol {
-            background-color: #6BA368;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
+    /* PROMO */
+    .promo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-        a.tombol:hover {
-            background-color: #588f56;
-        }
-    </style>
+    .promo-card {
+      border-radius: 20px;
+      padding: 30px;
+      width: 420px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .promo-card:hover {
+      transform: scale(1.03);
+    }
+
+    .bundle {
+      background-color: #fce6d1;
+    }
+
+    .akhir-tahun {
+      background-color: #ffd6d6;
+    }
+
+    /* PEMESANAN */
+    .pemesanan ol {
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #d6334a;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about img {
+        width: 90%;
+      }
+      .card, .promo-card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- HEADER -->
+  <header id="beranda">
+    <h1>PURE BERRY</h1>
+    <p>Stroberi Segar Langsung dari Petani 🍓</p>
+    <a href="#produk" class="tombol">Lihat Produk</a>
+  </header>
 
-    <!-- HEADER -->
-    <header>
-        <h1>PURE BERRY</h1>
-        <p>Stroberi Segar Langsung dari Petani 🍓</p>
-        <a href="#produk" class="tombol">Lihat Produk</a>
-    </header>
+  <!-- TENTANG KAMI -->
+  <section class="about" id="about">
+    <h2>Tentang Kami</h2>
+    <img src="tentang-kami-stroberi.jpg" alt="Tentang Kami">
+    <p>
+      Pure Berry adalah inisiatif lokal yang bekerja sama langsung dengan petani stroberi di Bogor.  
+      Kami membantu para petani menjual hasil panennya agar bisa menjangkau lebih banyak pelanggan tanpa perantara panjang.
+    </p>
+    <p>
+      Semua produk Pure Berry — baik stroberi segar maupun olahan — dijamin berasal dari bahan alami tanpa pengawet.  
+      Kami percaya, setiap buah punya cerita dan setiap rasa manisnya membawa manfaat bagi banyak orang.
+    </p>
+  </section>
 
-    <!-- TENTANG KAMI -->
-    <section class="about" id="about">
-        <h2>Tentang Kami</h2>
-        <img src="tentang kami stroberi.jpg" alt="Tentang Kami">
-        <p>Pure Berry adalah inisiatif lokal yang bekerja sama langsung dengan petani stroberi di Bogor. 
-        Kami membantu para petani menjual hasil panennya agar bisa menjangkau lebih banyak pelanggan tanpa perantara panjang.</p>
-        <p>Semua produk Pure Berry — baik stroberi segar maupun olahan - dijamin berasal dari bahan alami tanpa pengawet.
-        Kami percaya, setiap buah punya cerita dan setiap rasa manisnya membawa manfaat bagi banyak orang.</p>
-    </section>
+  <!-- PRODUK -->
+  <section id="produk">
+    <h2>Produk Kami</h2>
+    <h3 style="text-align:center;">🍓 Stroberi Segar</h3>
+    <div class="produk">
+      <div class="card">
+        <img src="stroberi-pack.jpg" alt="Strawberry Pack">
+        <h3>Pure Berry Fresh Pack</h3>
+        <p>
+          Stroberi segar pilihan langsung dari kebun petani. Cocok untuk dikonsumsi langsung atau dijadikan topping.
+        </p>
+        <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+      </div>
+      <div class="card">
+        <img src="frozen.jpg" alt="Strawberry Frozen">
+        <h3>Pure Berry Frozen Pack</h3>
+        <p>
+          Stroberi segar yang dibekukan agar kesegarannya tetap terjaga hingga ke tanganmu.
+        </p>
+        <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+      </div>
+    </div>
 
-    <!-- PRODUK -->
-    <section id="produk">
-        <h2>Produk Kami</h2>
-        <h3 style="text-align:center;">🍓 Stroberi Segar</h3>
-        <div class="produk">
-            <div class="card">
-               <<img src="stroberi pack.jpg" alt="Strawberry Pack">
-                <h3>Pure Berry Fresh Pack</h3>
-                <p>Stroberi segar pilihan langsung dari kebun petani. Cocok untuk dikonsumsi langsung atau dijadikan topping.</p>
-                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
-            </div>
-            <div class="card">
-                <<img src="frozen.jpg" alt="Strawberry Frozen">
-                <h3>Pure Berry Frozen Pack</h3>
-                <p>Stroberi segar yang dibekukan agar kesegarannya tetap terjaga hingga ke tanganmu.</p>
-                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
-            </div>
-        </div>
+    <h3 style="text-align:center; margin-top:50px;">🍯 Olahan Stroberi</h3>
+    <div class="produk">
+      <div class="card">
+        <img src="sirup-stroberi.jpg" alt="Strawberry Syrup">
+        <h3>Pure Berry Syrup</h3>
+        <p>
+          Syrup manis alami dari stroberi murni, tanpa pewarna buatan. Cocok untuk minuman dingin atau dessert.
+        </p>
+        <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+      </div>
+      <div class="card">
+        <img src="dessert-stroberi.jpg" alt="Strawberry Dessert">
+        <h3>Pure Berry Dessert Cup</h3>
+        <p>
+          Dessert segar dengan lapisan stroberi asli dan krim lembut, cocok untuk cemilan manis.
+        </p>
+        <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
+      </div>
+    </div>
+  </section>
 
-        <h3 style="text-align:center; margin-top:50px;">🍯 Olahan Stroberi</h3>
-        <div class="produk">
-            <div class="card">
-                <img src="sirup stroberi.jpg" alt="Strawberry Syrup">
-                <h3>Pure Berry Syrup</h3>
-                <p>Syrup manis alami dari stroberi murni, tanpa pewarna buatan. Cocok untuk minuman dingin atau dessert.</p>
-                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
-            </div>
-            <div class="card">
-                <<img src="dessert stroberi.jpg" alt="Strawberry Dessert">
-                <h3>Pure Berry Dessert Cup</h3>
-                <p>Dessert segar dengan lapisan stroberi asli dan krim lembut, cocok untuk cemilan manis.</p>
-                <a href="https://wa.me/6287799449884" class="tombol">Pesan Sekarang</a>
-            </div>
-        </div>
-    </section>
+  <!-- PROMO -->
+  <section id="promo">
+    <h2>Promo Menarik 🎁</h2>
+    <div class="promo-container">
+      <div class="promo-card bundle">
+        <h3>💕 Promo Bundle Hemat (Sepanjang Tahun)</h3>
+        <p>Nikmati paket hemat untuk pecinta stroberi! 🌸</p>
+        <p><strong>Beli 2 produk olahan</strong> (selai, syrup, dessert cup, dll) dapat potongan <strong>15%</strong>.</p>
+        <p>Cocok buat kamu yang mau stok rasa manis alami setiap hari 🍓</p>
+      </div>
 
-    <!-- PROMO -->
-    <section>
-        <h2>Promo Menarik 🎁</h2>
-        <div class="promo-container">
+      <div class="promo-card akhir-tahun">
+        <h3>🎄 Promo Akhir Tahun (1 November – 31 Desember)</h3>
+        <p>Rayakan akhir tahun dengan manisnya Pure Berry!</p>
+        <p>🎁 Gratis ongkir wilayah Bogor untuk pembelian minimal <strong>Rp100.000</strong>.</p>
+        <p>✨ Bonus mini jam stroberi untuk 20 pembeli pertama di bulan Desember!</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Promo Bundle Hemat -->
-            <div class="promo-card bundle">
-                <h3>💕 Promo Bundle Hemat (Sepanjang Tahun)</h3>
-                <p>Nikmati paket hemat untuk pecinta stroberi! 🌸</p>
-                <p><strong>Beli 2 produk olahan</strong> (selai, syrup, dessert cup, dll) dapat potongan <strong>15%</strong>.</p>
-                <p>Cocok buat kamu yang mau stok rasa manis alami setiap hari 🍓</p>
-            </div>
+  <!-- CARA PEMESANAN -->
+  <section class="pemesanan" id="pemesanan">
+    <h2>Cara Pemesanan 🛒</h2>
+    <ol>
+      <li>Pilih produk yang ingin kamu pesan di bagian “Produk Kami”.</li>
+      <li>Klik tombol “Pesan Sekarang” untuk diarahkan ke WhatsApp.</li>
+      <li>Ketik nama produk dan jumlah yang diinginkan.</li>
+      <li>Konfirmasi alamat pengiriman dan tunggu produk segarmu datang!</li>
+    </ol>
+  </section>
 
-            <!-- Promo Akhir Tahun -->
-            <div class="promo-card akhir-tahun">
-                <h3>🎄 Promo Akhir Tahun (1 November – 31 Desember)</h3>
-                <p>Rayakan akhir tahun dengan manisnya Pure Berry!</p>
-                <p>🎁 Gratis ongkir wilayah Bogor untuk pembelian minimal <strong>Rp100.000</strong>.</p>
-                <p>✨ Bonus mini jam stroberi untuk 20 pembeli pertama di bulan Desember!</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CARA PEMESANAN -->
-    <section class="pemesanan">
-        <h2>Cara Pemesanan 🛒</h2>
-        <ol>
-            <li>Pilih produk yang ingin kamu pesan di bagian “Produk Kami”.</li>
-            <li>Klik tombol “Pesan Sekarang” untuk diarahkan ke WhatsApp.</li>
-            <li>Ketik nama produk dan jumlah yang diinginkan.</li>
-            <li>Konfirmasi alamat pengiriman dan tunggu produk segarmu datang!</li>
-        </ol>
-    </section>
-
-    <!-- KONTAK -->
-    <footer>
-        <p>Hubungi kami di <a href="https://wa.me/6287799449884" style="color:white; text-decoration:underline;">WhatsApp: 0877 9944 9884</a></p>
-        <p>Pure Berry — Dari Petani ke Meja Kamu 🍓</p>
-    </footer>
-
+  <!-- KONTAK -->
+  <footer id="kontak">
+    <p>Hubungi kami di <a href="https://wa.me/6287799449884">WhatsApp: 0877 9944 9884</a></p>
+    <p>Pure Berry — Dari Petani ke Meja Kamu 🍓</p>
+  </footer>
 </body>
 </html>
